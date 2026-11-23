@@ -1,4 +1,4 @@
-# PromptsBox (promptsbox.com) — AdSense-Ready PHP CMS (Master Build Plan)
+# PromptsBox (promtsbox.com) — AdSense-Ready PHP CMS (Master Build Plan)
 
 > **Purpose:** Single source of truth for building a custom PHP + MySQL site with full SEO and admin panel.  
 > **Developer workflow:** Complete phases **in order**. Mark items `[x]` when done. Do not skip security or SEO foundations.  
@@ -51,7 +51,7 @@
 
 ### Working name & domain
 
-- **Brand:** `PromptsBox` — domain **promptsbox.com**
+- **Brand:** `PromptsBox` — domain **promtsbox.com**
 - **Config constant:** `APP_NAME`, `APP_URL`, `APP_ENV` in `config/app.php`.
 
 ---

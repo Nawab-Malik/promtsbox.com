@@ -47,7 +47,7 @@ No new database table needed.
 ## Link tools to blog posts (internal SEO)
 
 - Write a guide post (800+ words) targeting the same keyword
-- In the post, link to the tool: `https://promptsbox.com/tools/slug`
+- In the post, link to the tool: `https://promtsbox.com/tools/slug`
 - In the tool SEO body, link back to the post
 
 ## Writer checklist per tool page

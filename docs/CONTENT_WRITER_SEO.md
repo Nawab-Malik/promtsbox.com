@@ -4,17 +4,17 @@
 
 | Page | URL |
 |------|-----|
-| Home | `https://promptsbox.com/` |
-| All guides | `https://promptsbox.com/blog` |
-| Categories | `https://promptsbox.com/categories` |
-| Tools | `https://promptsbox.com/tools` |
-| About | `https://promptsbox.com/page/about` |
-| Contact | `https://promptsbox.com/page/contact` |
-| Privacy | `https://promptsbox.com/page/privacy-policy` |
-| Terms | `https://promptsbox.com/page/terms-of-service` |
-| Disclaimer | `https://promptsbox.com/page/disclaimer` |
-| Sitemap | `https://promptsbox.com/sitemap.xml` |
-| RSS | `https://promptsbox.com/feed.xml` |
+| Home | `https://promtsbox.com/` |
+| All guides | `https://promtsbox.com/blog` |
+| Categories | `https://promtsbox.com/categories` |
+| Tools | `https://promtsbox.com/tools` |
+| About | `https://promtsbox.com/page/about` |
+| Contact | `https://promtsbox.com/page/contact` |
+| Privacy | `https://promtsbox.com/page/privacy-policy` |
+| Terms | `https://promtsbox.com/page/terms-of-service` |
+| Disclaimer | `https://promtsbox.com/page/disclaimer` |
+| Sitemap | `https://promtsbox.com/sitemap.xml` |
+| RSS | `https://promtsbox.com/feed.xml` |
 
 Use **exact** slugs when adding internal links in HTML.
 

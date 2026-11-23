@@ -6,7 +6,7 @@ $item = $item ?? [];
     <strong>Google preview</strong>
     <div class="serp-preview" style="margin-top:0.5rem;padding:0.75rem;background:#111827;border-radius:8px;">
         <div id="serpTitle" style="color:#8ab4f8;font-size:1.05rem;"><?= e($item['meta_title'] ?? ($item['title'] ?? 'Page title')) ?></div>
-        <div style="color:#9aa0a6;font-size:0.82rem;"><?= e(parse_url((string) app_config('url'), PHP_URL_HOST) ?: 'promptsbox.com') ?></div>
+        <div style="color:#9aa0a6;font-size:0.82rem;"><?= e(parse_url((string) app_config('url'), PHP_URL_HOST) ?: 'promtsbox.com') ?></div>
         <div id="serpDesc" style="color:#bdc1c6;font-size:0.9rem;margin-top:0.25rem;"><?= e($item['meta_description'] ?? 'Meta description preview...') ?></div>
     </div>
 </div>

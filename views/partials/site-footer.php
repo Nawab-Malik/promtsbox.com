@@ -40,7 +40,7 @@ $logo = base_url('assets/images/logo.png');
         </div>
     </div>
     <div class="container footer-bottom">
-        <span>&copy; <?= date('Y') ?> <?= e($siteName) ?> · promptsbox.com</span>
+        <span>&copy; <?= date('Y') ?> <?= e($siteName) ?> · promtsbox.com</span>
         <a href="<?= e(base_url('feed.xml')) ?>">RSS</a>
         <a href="<?= e(base_url('sitemap.xml')) ?>">Sitemap</a>
     </div>

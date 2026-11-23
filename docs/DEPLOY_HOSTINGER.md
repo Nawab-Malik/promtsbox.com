@@ -1,4 +1,4 @@
-# Deploy PromptsBox to Hostinger (promptsbox.com)
+# Deploy PromptsBox to Hostinger (promtsbox.com)
 
 ## 1. GitHub → Hostinger
 
@@ -19,7 +19,7 @@ If Hostinger only allows `public_html`, upload repo and point domain to `public_
 ## 2. `config/app.php` (production)
 
 ```php
-'url' => 'https://promptsbox.com',
+'url' => 'https://promtsbox.com',
 'env' => 'production',
 'debug' => false,
 ```
@@ -64,9 +64,9 @@ If login fails, hPanel → **Databases** → check the exact **username** (somet
 
 ## 7. SEO after go-live
 
-1. **Google Search Console** → add property `https://promptsbox.com`
+1. **Google Search Console** → add property `https://promtsbox.com`
 2. Admin → Settings → paste **verification** meta tag
-3. Submit sitemap: `https://promptsbox.com/sitemap.xml`
+3. Submit sitemap: `https://promtsbox.com/sitemap.xml`
 4. Test: Home, About, Contact, Privacy, Tools, Blog — all **200 OK**
 5. Apply **AdSense** only after 25+ articles + trust pages filled
 

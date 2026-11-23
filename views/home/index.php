@@ -1,7 +1,7 @@
 <section class="hero-banner">
     <div class="container hero-grid">
         <div class="hero-copy">
-            <p class="eyebrow">PromptsBox · promptsbox.com</p>
+            <p class="eyebrow">PromptsBox · promtsbox.com</p>
             <h1>AI prompts &amp; tools that turn ideas into scroll-stopping content</h1>
             <p class="hero-lead">Copy-ready prompts, free generators, and guides for Instagram, TikTok, and image AI — organized like a real library.</p>
             <div class="hero-actions">

@@ -6,7 +6,7 @@ return [
     'name' => 'PromptsBox',
     'tagline' => 'Free AI prompts, tools & guides for creators',
     'url' => 'http://localhost/Adsense/public',
-    'domain' => 'promptsbox.com',
+    'domain' => 'promtsbox.com',
     'env' => 'local',
     'debug' => true,
     'timezone' => 'Asia/Karachi',

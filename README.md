@@ -1,4 +1,4 @@
-# PromptsBox (promptsbox.com)
+# PromptsBox (promtsbox.com)
 
 Custom PHP + MySQL CMS for AI prompts, tools, and SEO blog content.
 
@@ -17,7 +17,7 @@ Custom PHP + MySQL CMS for AI prompts, tools, and SEO blog content.
 
 After production deploy:
 
-- Set `config/app.php` → `'url' => 'https://promptsbox.com'`
+- Set `config/app.php` → `'url' => 'https://promtsbox.com'`
 - Delete `public/install.php`
 - Enable HTTPS and update `.htaccess` `RewriteBase` to `/`
 
@@ -55,7 +55,7 @@ Editors: **posts + media only**. Admins: content + tools. Superadmin: users + se
 
 | File | Purpose |
 |------|---------|
-| [docs/DEPLOY_HOSTINGER.md](docs/DEPLOY_HOSTINGER.md) | GitHub → Hostinger, `promptsbox.com` config |
+| [docs/DEPLOY_HOSTINGER.md](docs/DEPLOY_HOSTINGER.md) | GitHub → Hostinger, `promtsbox.com` config |
 | [docs/CONTENT_WRITER_SEO.md](docs/CONTENT_WRITER_SEO.md) | URLs, images, internal links for writers |
 | [docs/TOOLS_GUIDE.md](docs/TOOLS_GUIDE.md) | How to create admin tools |
 
@@ -68,6 +68,6 @@ See [PROJECT_BUILD_PLAN.md](PROJECT_BUILD_PLAN.md) for full roadmap.
 Before deploy set in `config/app.php`:
 
 ```php
-'url' => 'https://promptsbox.com',
+'url' => 'https://promtsbox.com',
 'debug' => false,
 ```

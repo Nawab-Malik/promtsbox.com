@@ -26,7 +26,7 @@ INSERT INTO settings (setting_key, setting_value) VALUES
 ('adsense_enabled', '0'),
 ('robots_extra', ''),
 ('maintenance_mode', '0'),
-('contact_email', 'hello@promptsbox.com'),
+('contact_email', 'hello@promtsbox.com'),
 ('social_twitter', ''),
 ('social_facebook', ''),
 ('social_instagram', ''),
