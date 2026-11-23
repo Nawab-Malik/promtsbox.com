@@ -17,7 +17,7 @@ final class Database
             return self::$pdo;
         }
 
-        $db = require CONFIG_PATH . '/database.php';
+        $db = database_config();
         $dsn = sprintf(
             'mysql:host=%s;port=%d;dbname=%s;charset=%s',
             $db['host'],

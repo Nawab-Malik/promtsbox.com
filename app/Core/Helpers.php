@@ -14,6 +14,21 @@ function app_config(?string $key = null, mixed $default = null): mixed
     return $config[$key] ?? $default;
 }
 
+/** @return array{host:string,port:int,database:string,username:string,password:string,charset:string,create_database?:bool} */
+function database_config(): array
+{
+    static $db;
+    if ($db === null) {
+        $db = require CONFIG_PATH . '/database.php';
+        $local = CONFIG_PATH . '/database.local.php';
+        if (is_file($local)) {
+            $db = array_merge($db, require $local);
+        }
+    }
+
+    return $db;
+}
+
 function base_url(string $path = ''): string
 {
     $base = rtrim((string) app_config('url'), '/');

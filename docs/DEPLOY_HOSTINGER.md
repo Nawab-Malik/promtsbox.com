@@ -28,7 +28,21 @@ See `config/app.production.example.php`.
 
 ## 3. `config/database.php`
 
-Use Hostinger MySQL credentials from hPanel.
+Use Hostinger MySQL credentials from hPanel in **`config/database.local.php`** (not pushed by Git — create it in File Manager):
+
+```php
+<?php
+return [
+    'host' => 'localhost',
+    'database' => 'u731445249_promtsbox',
+    'username' => 'u731445249_promtsbox',
+    'password' => 'YOUR_PASSWORD',
+    'charset' => 'utf8mb4',
+    'create_database' => false,
+];
+```
+
+If login fails, hPanel → **Databases** → check the exact **username** (sometimes it differs from DB name).
 
 ## 4. Database
 
@@ -58,6 +72,22 @@ Use Hostinger MySQL credentials from hPanel.
 
 ## 8. `.htaccess`
 
-On live root, `RewriteBase /` (not `/Adsense/public/`).
+On live **`public/.htaccess`**, set:
+
+```apache
+RewriteBase /
+```
 
 Local XAMPP keeps `RewriteBase /Adsense/public/`.
+
+Repo root includes **`.htaccess`** so Git deploy into `public_html` (full repo) routes traffic to `public/`. Pull latest from GitHub if you only see **403 Forbidden**.
+
+## 9. Troubleshooting **403 Forbidden**
+
+| Cause | Fix |
+|-------|-----|
+| Domain opens **repo root** (`public_html`) with no `index.php` there | Set hPanel **Document root** to `public_html/public` **or** use repo root `.htaccess` (above) |
+| `public/.htaccess` still has `RewriteBase /Adsense/public/` | Change to `RewriteBase /` on server |
+| Opened `/config/` or `/app/` in browser | Normal — blocked on purpose; use homepage URL only |
+| Folder permissions | `storage/` and `public/uploads/` → **755** or **775** |
+| Database not set | Usually **500** or redirect to install — fix `config/database.php` and run `install.php` once |

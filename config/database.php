@@ -9,4 +9,6 @@ return [
     'username' => 'root',
     'password' => '',
     'charset' => 'utf8mb4',
+    // Local XAMPP: auto-create DB. Hostinger: set create_database => false in database.local.php
+    'create_database' => true,
 ];

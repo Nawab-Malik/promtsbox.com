@@ -1,0 +1,13 @@
+# Hostinger / GitHub deploy: entire repo is cloned into public_html.
+# This sends visitors to the real web root: /public/
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^$ public/ [L]
+    RewriteRule ^((?!public/).*)$ public/$1 [L]
+</IfModule>
+
+# Block direct web access to application code (if rewrite fails or wrong URL)
+<IfModule mod_authz_core.c>
+    RedirectMatch 403 ^/(app|bootstrap\.php|config|database|storage|views|routes|vendor)(/|$)
+</IfModule>

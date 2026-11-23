@@ -2,12 +2,43 @@
 
 declare(strict_types=1);
 
-$configDb = require dirname(__DIR__) . '/config/database.php';
+require dirname(__DIR__) . '/bootstrap.php';
+
+$configDb = database_config();
 $installedLock = dirname(__DIR__) . '/storage/installed.lock';
 
 if (is_file($installedLock) && !isset($_GET['force'])) {
     echo 'Already installed. Delete storage/installed.lock only if you need to reinstall.';
     exit;
+}
+
+/**
+ * @return list<string>
+ */
+function install_sql_statements(string $sql): array
+{
+    $sql = preg_replace('/^\s*--.*$/m', '', $sql) ?? $sql;
+    $parts = preg_split('/;\s*\n/', $sql) ?: [];
+    $out = [];
+    foreach ($parts as $part) {
+        $part = trim($part);
+        if ($part !== '') {
+            $out[] = $part;
+        }
+    }
+
+    return $out;
+}
+
+function install_run_sql_file(PDO $pdo, string $path): void
+{
+    $contents = file_get_contents($path);
+    if ($contents === false || trim($contents) === '') {
+        return;
+    }
+    foreach (install_sql_statements($contents) as $statement) {
+        $pdo->exec($statement);
+    }
 }
 
 $error = null;
@@ -21,22 +52,40 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = 'Password must be at least 10 characters.';
     } else {
         try {
-            $pdo = new PDO(
-                'mysql:host=' . $configDb['host'] . ';charset=utf8mb4',
-                $configDb['username'],
-                $configDb['password'],
-                [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
-            );
-            $pdo->exec('CREATE DATABASE IF NOT EXISTS `' . $configDb['database'] . '` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci');
-            $pdo->exec('USE `' . $configDb['database'] . '`');
+            $createDb = (bool) ($configDb['create_database'] ?? false);
+            $port = (int) ($configDb['port'] ?? 3306);
 
-            $schema = file_get_contents(dirname(__DIR__) . '/database/schema.sql');
-            if ($schema) {
-                $pdo->exec($schema);
+            if ($createDb) {
+                $pdo = new PDO(
+                    sprintf('mysql:host=%s;port=%d;charset=utf8mb4', $configDb['host'], $port),
+                    $configDb['username'],
+                    $configDb['password'],
+                    [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
+                );
+                $pdo->exec(
+                    'CREATE DATABASE IF NOT EXISTS `' . $configDb['database'] . '` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci'
+                );
+                $pdo->exec('USE `' . $configDb['database'] . '`');
+            } else {
+                $pdo = new PDO(
+                    sprintf(
+                        'mysql:host=%s;port=%d;dbname=%s;charset=utf8mb4',
+                        $configDb['host'],
+                        $port,
+                        $configDb['database']
+                    ),
+                    $configDb['username'],
+                    $configDb['password'],
+                    [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
+                );
             }
-            $seed = file_get_contents(dirname(__DIR__) . '/database/seed.sql');
-            if ($seed) {
-                $pdo->exec($seed);
+
+            $base = dirname(__DIR__) . '/database';
+            install_run_sql_file($pdo, $base . '/schema.sql');
+            install_run_sql_file($pdo, $base . '/seed.sql');
+            $pagesUpdate = $base . '/update_pages_content.sql';
+            if (is_file($pagesUpdate)) {
+                install_run_sql_file($pdo, $pagesUpdate);
             }
 
             $hash = password_hash($password, PASSWORD_DEFAULT);
@@ -78,7 +127,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <label>Password (10+ chars)<input type="password" name="password" required></label>
             <button type="submit">Install database</button>
         </form>
-        <p class="hint">Ensure MySQL is running in XAMPP and database name <code>promptsbox</code> in config/database.php.</p>
+        <p class="hint">Hostinger: create empty MySQL DB in hPanel, set <code>config/database.local.php</code>, then run this once.</p>
+        <p class="hint">Database: <code><?= htmlspecialchars((string) ($configDb['database'] ?? '')) ?></code> on <code><?= htmlspecialchars((string) ($configDb['host'] ?? '')) ?></code></p>
     <?php endif; ?>
 </main>
 </body>
