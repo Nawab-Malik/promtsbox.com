@@ -72,13 +72,7 @@ If login fails, hPanel → **Databases** → check the exact **username** (somet
 
 ## 8. `.htaccess`
 
-On live **`public/.htaccess`**, set:
-
-```apache
-RewriteBase /
-```
-
-Local XAMPP keeps `RewriteBase /Adsense/public/`.
+**`public/.htaccess`:** do **not** set `RewriteBase /Adsense/public/` on live — that breaks `/admin`, `/blog`, etc. (only homepage works). Use the repo version with **no RewriteBase** line, or `RewriteBase /` only if your host requires it.
 
 Repo root includes **`.htaccess`** so Git deploy into `public_html` (full repo) routes traffic to `public/`. Pull latest from GitHub if you only see **403 Forbidden**.
 
