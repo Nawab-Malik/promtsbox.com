@@ -1,0 +1,1 @@
+ALTER TABLE posts ADD COLUMN view_count INT UNSIGNED NOT NULL DEFAULT 0 AFTER focus_keyword;

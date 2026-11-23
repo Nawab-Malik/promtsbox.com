@@ -1,0 +1,15 @@
+{
+  "name": "PromptsBox",
+  "short_name": "PromptsBox",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f4f7fc",
+  "theme_color": "#1e3a8a",
+  "icons": [
+    {
+      "src": "/assets/images/logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
